@@ -1,0 +1,52 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    box-sizing : border-box;
+}
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+.new_class{
+    width: 100%;
+    min-width: 500px;
+    border: 2px solid red;
+    border-radius : 50px;
+    padding: 0px;
+    display : flex;
+    align-items : stretch;
+    justify-content : center;
+    padding-left: 10px;
+    background-color: rgb(232, 197, 197);
+}
+#input_here {
+    flex: 1;
+    margin: 8px 20px 10px 20px;
+    padding: 10px 0;
+    border : none;
+    border-radius : 50px;
+    color: white;
+    background-color: transparent;
+}
+#input_here:focus-visible {
+    outline : none;
+}
+#add_it {
+    background-color: red;
+    color: white;
+    width: 100px;
+    border: 2px solid red;
+    border-radius: 50px 50px ;
+    cursor: pointer;
+}
+#img1 {
+    width: 40px;
+    margin-right: 20px;
+}
+#head p{
+    font-size: 30px;
+}
