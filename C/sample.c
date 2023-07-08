@@ -1,13 +1,16 @@
 #include <stdio.h>
+#include <string.h>
 
-struct person {
-    int age;
-    int num;
+struct veh {
+    int year;
+    char brand[20];
+    char class;
 };
 
+typedef int Array[4];
 int main() {
-    struct person p1;
-    p1.age = 45;
-    printf("%d", p1.age);
-    return 0;
+    Array arr = {1, 5, 2, 9};
+    for(int i = 0; i < 4; i++){
+        printf("%d \n", arr[i]);
+    }
 }
