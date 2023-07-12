@@ -1,19 +1,8 @@
+import java.lang.Math;
+
 public class sample {
     public static void main(String agrs[]){
-
-    }
-
-    public static void remove(String str, int index, StringBuilder sb, boolean arr[]) {
-        if(index == str.length()){
-            System.out.println(sb);
-        }
-
-        if(arr[str.charAt(index) - 'a']) {
-            remove(str, index + 1, sb, arr);
-        }
-        else {
-            arr[str.charAt(index) - 'a'] = true;
-            remove(str, index + 1, sb.append(str.charAt(index)), arr);
-        }
+        int num = 23;
+        System.out.println((int)(num / Math.pow(10, (int)Math.log10(num))));
     }
 }
