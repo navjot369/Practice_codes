@@ -10,4 +10,3 @@ Languages -
 - HTMl, CSS and Javascript
 
 
-Coding is awesome.
