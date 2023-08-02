@@ -8,11 +8,9 @@ public class duplicateParent {
             char ch = str.charAt(i);
             if(ch == ')') {
                 int count = 0;
-                while(s.peek() != '(') {
-                    s.pop();
+                while(s.pop() != '(') {
                     count++;
                 }
-                s.pop();
                 if(count < 1) {
                     return true;
                 }
