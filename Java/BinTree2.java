@@ -66,6 +66,18 @@ public class BinTree2 {
         return leftCase || rightCase;
     }
 
+    public static void getLevel(Node root, int level,int k) {
+        if(root == null) {
+            return;
+        }
+        if(level == k) {
+            System.out.print(root.data + "  ");
+            return;
+        }
+        getLevel(root.left, level + 1, k);
+        getLevel(root.right, level + 1, k);
+    }
+
     public static void main(String args[]) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -82,7 +94,6 @@ public class BinTree2 {
         subroot.left = new Node(4);
         subroot.right = new Node(5);
 
-        System.out.println(isSubtree(root, subroot));
-
+        getLevel(root, 1, 2);
     }
 }
