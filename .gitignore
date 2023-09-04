@@ -1,3 +1,4 @@
-.vs-code/*.json
+".vs-code"/
 *.dsYM/
 .DS_Store
+/*.json
