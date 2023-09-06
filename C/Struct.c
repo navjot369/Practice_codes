@@ -1,16 +1,31 @@
 #include <stdio.h>
-#include <string.h>
 
 int main() {
-    FILE *file1;
-    file1 = fopen("test1.txt", "w");
-    if(file1 == NULL) {
-        printf("file not opened");
-        return 0;
-    }
-    char str1[40];
-    scanf("%[^\n]",  str1);
-    fprintf(file1, "%s", str1);
+    FILE *ptr;
+    ptr = fopen("test1.txt", "r");
+
+    char str[30];
+    fgets(str, 30, ptr);
+    printf("%s", str);
+    rewind(ptr);
+    fgets(str, 30, ptr);
+    printf("%s", str);
     
-    fclose(file1);
+    
+    // char str[] = "My name is Mitul";
+    // fwrite(str, 1, 30, ptr);
+
+    // char str[30];
+    // fread(str, 1, 10, ptr);
+    // printf("%s", str);
+    // char str[30];
+    // char ch = fgetc(ptr);
+    // while(ch != EOF) {
+    //     printf("%c", ch);
+    //     ch = fgetc(ptr);
+    // }
+    // while(fgets(str, 30, ptr) != 0) {
+    //     printf("%s", str);
+    // }
+    fclose(ptr);
 }
