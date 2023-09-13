@@ -23,7 +23,6 @@ int isdrop(char top, char curr) {
     }
     if(prec(top) >= prec(curr)) {
         return 1;
-        printf("Drop %c \n", top);
     }else {
         return 0;
     }

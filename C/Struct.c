@@ -1,31 +1,28 @@
+// #include <stdio.h>
+// #include <stdarg.h>
+
+// int sum(int count, ...) {
+//     va_list lt;
+//     va_start(lt, count);
+
+//     int sum = 0;
+//     for(int i = 0; i < count; i++) {
+//         sum += va_arg(lt, int);
+//     }
+
+//     return sum;
+// }
+
+// int main(){
+//     int res = sum(4, 2, 4, 2, 32);
+//     printf("%d \n", res);
+// }
+
 #include <stdio.h>
 
+
+
 int main() {
-    FILE *ptr;
-    ptr = fopen("test1.txt", "r");
-
-    char str[30];
-    fgets(str, 30, ptr);
-    printf("%s", str);
-    rewind(ptr);
-    fgets(str, 30, ptr);
-    printf("%s", str);
-    
-    
-    // char str[] = "My name is Mitul";
-    // fwrite(str, 1, 30, ptr);
-
-    // char str[30];
-    // fread(str, 1, 10, ptr);
-    // printf("%s", str);
-    // char str[30];
-    // char ch = fgetc(ptr);
-    // while(ch != EOF) {
-    //     printf("%c", ch);
-    //     ch = fgetc(ptr);
-    // }
-    // while(fgets(str, 30, ptr) != 0) {
-    //     printf("%s", str);
-    // }
-    fclose(ptr);
+    char str[] = "Navjot";
+    printf("Navjot");
 }

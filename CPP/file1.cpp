@@ -1,19 +1,14 @@
 #include <iostream>
+#include <string>
+#include <ctime>
 using namespace std;
 
-class Calculator {
-    public:
-    int num1 = 20;
-    int num2 = 30;
+typedef int *ptrInt;
 
-    int addition(int num) {
-        return num1 + num;
-    }
-};
-
-int main(){
-    Calculator c1;
-    int ans = c1.addition(4);
-    
-    cout << ans << endl;
+int main() {
+    int x = 8;
+    ptrInt x1;
+    x1 = &x;
+    cout << x1 << endl;
+    cout << *x1 << endl;
 }

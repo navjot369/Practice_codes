@@ -2,3 +2,9 @@
 *.dsYM/
 .DS_Store
 *.json
+C/build/Debug/outDebug
+CPP/build/Debug/file1.o
+CPP/build/Debug/outDebug
+C/build/Debug/Struct.o
+CPP/a.out
+C/Struct
