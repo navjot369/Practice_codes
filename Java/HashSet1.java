@@ -37,7 +37,7 @@ public class HashSet1 {
 
 
         System.out.println("Using iterator - ");
-        Iterator itr = lset.iterator();
+        Iterator<Integer> itr = lset.iterator();
         while(itr.hasNext()) {
             System.out.println(itr.next());
         }

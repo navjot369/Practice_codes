@@ -7,7 +7,7 @@ public class java1 {
         System.out.println(num + "  ");
     }
 
-    public static void main(String args[]){
+   void main(){
         printInc(12);
     }
 }
