@@ -1,11 +1,8 @@
-function calculateDaysBetweenDates(begin, end) {
-    var diff = end - begin;
-    var days = Math.floor(diff / 86400000);
-    return days;
+function fun1(x) {
+    console.log("x -- " + x);
+    console.log("y -- " + y);
+    console.log("z -- " + z);
 }
 
-function calculateDaysBetweenDates(begin, end) {
-    var diff = end - begin;
-    var days = Math.floor(diff / 86400000);
-    return days;
-}
+let partialfn = fun1.bind(this, 6, 2);
+partialfn(7);

@@ -1,11 +1,8 @@
-function fun1(){
-    const user = document.getElementById("num");
-    const val = Number(user.value);
-    user.value = "";
-    try{
-        decodeURI("%%%");
-    }
-    catch(err){
-        document.getElementById("demo").innerHTML = err;
-    }
-}
+const JSX = (
+    <div>
+      <h1>Hello World</h1>
+      <p>Lets render this to the DOM</p>
+    </div>
+  );
+  // Add your code below this line
+  ReactDOM.render(JSX, document.getElementById("container"));
