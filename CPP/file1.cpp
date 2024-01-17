@@ -1,7 +1,14 @@
 #include <iostream>
+#include <vector>
+ 
 using namespace std;
-int main() {
-    int a = 5;
-    int& b = a;
-    cout << b << endl;
+ 
+// Driver code
+int main()
+{
+    int low = 3 ;
+    int *ptr = &low;
+    cout << *ptr << endl;
+ 
+    return 0;
 }

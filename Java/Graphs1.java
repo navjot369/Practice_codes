@@ -15,7 +15,7 @@ public class Graphs1 {
 
     @SuppressWarnings("unchecked")
     public static void main(String args[]) {
-        int V = 5;
+        int V = 4;
         ArrayList<Edge>[] list = new ArrayList[V];
 
         for(int i = 0; i < V; i++) {
@@ -23,10 +23,11 @@ public class Graphs1 {
         }
 
         list[0].add(new Edge(0, 1, 1));
-        list[0].add(new Edge(0, 2, 1));
+        // list[0].add(new Edge(0, 2, 1));
         list[1].add(new Edge(1, 0, 1));
-        list[1].add(new Edge(1, 3, 1));
-        list[2].add(new Edge(2, 1, 1));
+        // list[1].add(new Edge(1, 3, 1));
+        list[2].add(new Edge(2, 3, 1));
+        list[3].add(new Edge(3, 2, 1));
 
         System.out.print("BFS - ");
         bfs(list);
@@ -39,10 +40,9 @@ public class Graphs1 {
         System.out.println("hasPath - " + hasPath(list, 2, 3, vis));
     }
 
-    public static void bfs(ArrayList<Edge>[] list) {
+    public static void bfsUtil(ArrayList<Edge>[] list, boolean[] vis, int ind) {
         Queue<Integer> q = new ArrayDeque<>();
-        boolean[] vis = new boolean[list.length];
-        q.add(0);
+        q.add(ind);
 
         while(!q.isEmpty()) {
             int curr = q.remove();
@@ -55,6 +55,15 @@ public class Graphs1 {
                     Edge e = list[curr].get(i);
                     q.add(e.dest);
                 }
+            }
+        }
+    }
+
+    public static void bfs(ArrayList<Edge>[] list) {
+        boolean vis[] = new boolean[list.length];
+        for(int i = 0; i < list.length; i++) {
+            if(!vis[i]){
+                bfsUtil(list, vis, i);
             }
         }
         System.out.println();

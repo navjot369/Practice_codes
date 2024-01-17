@@ -1,0 +1,21 @@
+.navbar-container {
+    width: 100%;
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(222, 46, 46, 0.8);
+}
+.logo-container {
+    font-size: 2rem;
+}
+.menu-container {
+    display: flex;
+}
+.menu-links {
+    color: blue;
+    padding: 0 20px;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
