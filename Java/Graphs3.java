@@ -13,13 +13,16 @@ public class Graphs3 {
         }
     }
 
-    public static class Vertex {
+    public static class Vertex implements Comparable<Vertex> {
         int ind;
         int sp;
 
         public Vertex(int i, int p) {
             this.ind = i;
             this.sp = p;
+        }
+        public int compareTo(Vertex v) {
+            return this.sp - v.sp;
         }
     }
 
@@ -38,9 +41,38 @@ public class Graphs3 {
         graph[3].add(new Edge(3, 5, 1));
         graph[4].add(new Edge(4, 3, 2));
         graph[4].add(new Edge(4, 5, 5));
+
+        Dijkstra(graph, 0);
     }
 
-    public static void Dijkstra(ArrayList<Edge>[] graph) {
+    public static void Dijkstra(ArrayList<Edge>[] graph, int src) {
+        boolean vis[] = new boolean[graph.length];
+        int dist[] = new int[graph.length];
+        for(int i = 0; i < dist.length; i++) {
+            if(i != src) {
+                dist[i] = Integer.MAX_VALUE;
+            }
+        }
+
+        PriorityQueue<Vertex> pq = new PriorityQueue<>();
+        pq.add(new Vertex(src, 0));
         
+        while(!pq.isEmpty()) {
+            Vertex curr = pq.remove();
+            vis[curr.ind] = true;
+            for(int i = 0; i < graph[curr.ind].size(); i++) {
+                Edge e = graph[curr.ind].get(i);
+                if(!vis[e.dest]) {
+                    if(dist[e.src] + e.wt < dist[e.dest]) {
+                        dist[e.dest] = dist[e.src] + e.wt;
+                        pq.add(new Vertex(e.dest, dist[e.dest]));
+                    }
+                }
+            }
+        }
+        for(int i = 0; i < dist.length; i++) {
+            System.out.print(dist[i] + " ");
+        }
+        System.out.println();
     }
 }

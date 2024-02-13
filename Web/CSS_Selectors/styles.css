@@ -1,0 +1,67 @@
+body {
+    background-color: rgb(13, 192, 237);
+}
+fieldset {
+    border-color: rgb(44, 168, 199);
+    box-shadow: 1px 1px 0 blue;
+    font-size: 2rem;
+    color: white;
+}
+.outer {
+    border: 2px solid blue;
+    box-shadow: 8px 8px 4px white;
+    width: fit-content;
+    margin: auto;
+    padding: 14px;
+    background-color: grey;
+}
+table {
+    border: 2px solid blue;
+    margin: auto;
+    font-size: 1.3rem;
+    border-collapse: collapse;
+}
+.heading {
+    box-shadow: 2px 2px 4px black inset;
+    text-align: center;
+    color: blue;
+    text-decoration: underline;
+    font-size: 1.8rem;
+}
+td:first-child {
+    width: 200px;
+}
+td:last-child {
+    width: 300px;
+}
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 20px 10px;
+    color: black;
+}
+.green {
+    background-color: green;
+    font-size: 1.1rem;
+}
+.green::placeholder {
+    color: rgb(184, 178, 178);;
+}
+.white {
+    background-color: white;
+    font-size: 1.1rem;
+}
+.radio-input {
+    font-size: 1rem;
+    color: black;
+}
+.inner {
+    width: fit-content;
+    margin: auto;
+}
+.inner button {
+    margin: 5px;
+    background-color: aqua;
+    box-shadow: 2px 2px 2px white;
+    font-size: 1.2rem;
+}
