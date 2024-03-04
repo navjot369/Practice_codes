@@ -1,7 +1,31 @@
-div {
-    margin: 10px;
-    padding: 10px;
-}
-body{
+/* body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
     padding: 20px;
+}
+
+
+table, th, td {
+    border: 2px solid white;
+}
+table {
+    width: 100%;
+}
+th, td {
+    background-color: blue;
+} */
+
+table,
+th,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    background-color: #96D4D4;
 }

@@ -2,5 +2,8 @@
 using namespace std;
 
 int main() {
-    cout << (26 & (26-1)) << endl;
+    cout << "Hello! ";
+    string name = "Navjat";
+    name[4] = 'o';
+    cout << name << endl;
 }

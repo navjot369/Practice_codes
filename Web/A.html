@@ -9,12 +9,35 @@
     <script src="./bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="btn-group mx-auto block ">
-    <button class="btn btn-primary w-20">About us</button>
-    <button class="btn btn-primary">Gallery</button>
-    <button class="btn btn-primary">Sign up</button>
-    <button class="btn btn-primary">Sign In</button>
-    <button class="btn btn-primary">Contact us</button>
+  <div>
+  <input id="val-row" type="number" placeholder="Enter rows"/>
+  <input id="val-col" type="number" placeholder="Enter columns"/>
+  <button onclick="checkit()" class="text text-info">Print table</button>
   </div>
+  <div id="ans"></div>
+  <table style="width:100%">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th> 
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>80</td>
+    </tr>
+  </table>
+  <script type="text/javascript" src="practice1.js">
+  </script>
 </body>
 </html>

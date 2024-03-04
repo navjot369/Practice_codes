@@ -1,39 +1,56 @@
+import java.util.*;
+
 public class pattern1 {
     public static void main(String args[]) {
-        
-        for(int i = 1; i < 4; i++) {
-            int j = 1;
-            for(; j <= i; j++) {
-                System.out.print(j);
+        int row = 5;
+        int col = 20;
+        int paper = 20;
+
+        int highestnum = 0;
+
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+        for(int np = 0; np < paper; np++) {
+
+            for(int i = np; i < np+row; i++) {
+                if(i == list.size()){
+                    list.add(new ArrayList<Integer>());
+                }
+                ArrayList<Integer> item = list.get(i);
+                for(int j = 0; j < np; j++) {
+                    if(j == item.size()) {
+                        item.add(0);
+                    }
+                }
+                for(int j = np; j < np+col; j++) {
+                    if(j == item.size()) {
+                        item.add(1);
+                    }
+                    else {
+                        item.set(j, item.get(j) + 1);
+                        if(item.get(j) > highestnum) {
+                            highestnum = item.get(j);
+                        }
+                    }
+                }
             }
-            j = 2;
-            if(i == 1) {
-                System.out.print(i);
-                j--;
-            }
-            for(; j >= 1; j--) {
-                System.out.print(j);
-            }
-            System.out.println();
         }
-        for(int i = 3; i >= 1; i--) {
-            int j = 4 - i;
-            for(; j > 0; j--) {
+
+        int len = (int)Math.floor(Math.log10(highestnum)) + 1;
+        String fstr = "%" + len + "d";
+        for(int i = 0; i < list.size(); i++){
+            ArrayList<Integer> item = list.get(i);
+            for(int j = 0; j < item.size(); j++) {
+                if(item.get(j) == 0) {
+                    System.out.print(String.valueOf(" ").repeat(len));
+                }
+                else{
+                    System.out.printf(fstr, item.get(j));
+                }
                 System.out.print(" ");
             }
-            j++;
-            for(; j <= i; j++) {
-                System.out.print(j);
-            }
-            j = 2;
-            if(i == 1) {
-                System.out.print(i);
-                j--;
-            }
-            for(; j >= 1; j--) {
-                System.out.print(j);
-            }
             System.out.println();
         }
+
     }
 }

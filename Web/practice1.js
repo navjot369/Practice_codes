@@ -1,10 +1,17 @@
-const arr = [1, 2, 3, 4, 5];
-function fun1(value){
-    if(value%2==0){
-        return true;
-    } else {
-        return false;
+function checkit() {
+    let rows = document.getElementById("val-row").value;
+    let cols = document.getElementById("val-col").value;
+    let ele = document.getElementById("ans");
+    let ans = "<table>";
+    let count = 1;
+    for(let i = 0; i < rows; i++) {
+        ans += "<tr>";
+        for(let j = 0; j < cols; j++) {
+            ans += ("<td>" + count + "</td>");
+            count++;
+        }
+        ans += "</tr>";
     }
+    ele.innerHTML  = ans;
+    console.log(ans.innerHTML);
 }
-console.log(arr.every(fun1));
-
