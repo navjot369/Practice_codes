@@ -1,88 +1,100 @@
 //{ Driver Code Starts
-// Initial Template for Java
-
-import java.io.*;
-import java.util.*;
-class GfG {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int t = 1;
-        while (t-- > 0) {
-            int sum = 4;//{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
-import java.io.*;
 
-class GFG {
-	public static void main (String[] args) {
-
-		Scanner sc=new Scanner(System.in);
-		int test=sc.nextInt();
-		while(test-- > 0){
-		    int p=sc.nextInt();             // Take size of both the strings as input
-		    int q=sc.nextInt();
-		    
-		    String s1=sc.next();            // Take both the string as input
-	        String s2=sc.next();
-		    
-		    Solution obj = new Solution();
-		    
-		    System.out.println(obj.lcs(p, q, s1, s2));
-		}
-	}
-}
-// } Driver Code Ends
-
-
-class Solution
+class Rearrange
 {
-    //Function to find the length of longest common subsequence in two strings.
-    static int lcs(int x, int y, String s1, String s2)
-    {
-        int dp[] = new int[x+1];
-        int s = 1;
-        for(int i = 0; i < y; i++) {
-            int j = start;
-            for(; j < x+1; j++) {
-                if(s1.charAt(j) == s2.charAt(i)) {
-                    dp[j]++;
-                    start = j++;
-                    break;
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t  = 1;
+        
+        while(t-- > 0)
+        {
+            String str = "";
+            str = sc.next();
+            
+            int old = str.length();
+            int chs[] = new int[26];
+            Arrays.fill(chs, 0);
+            
+            for(int i=0;i<str.length();i++){
+                int idx = str.charAt(i)-'a';
+                if(idx>=0&&idx<26)
+                chs[idx]++;
+            }
+            Solution gfg = new Solution();     
+            str = gfg.rearrangeString(str);
+			System.out.println(str);
+            int flag=1,ff=0;
+            int chs2[] = new int[26];
+            Arrays.fill(chs2, 0);
+	        
+	        for(int i=0;i<str.length();i++){
+	            int idx = str.charAt(i)-'a';
+                if(idx>=0&&idx<26)
+	            chs2[idx]++;
+	        }
+	             
+	        if(str.length() != old)
+	         System.out.println(0);
+	        else
+	        {
+	            
+    	        for(int i=0;i<26;i++)
+                    if(chs[i] != chs2[i])
+                        ff=1;
+                
+                if(ff==1){
+                        System.out.println(0);
+                }
+                else{
+        	        if(str != "-1"){
+                    	for(int i=1;i<str.length();i++)
+                    	{
+                    		if(str.charAt(i-1) == str.charAt(i))
+                    			flag=0;
+                    	}
+                    	if(flag == 1)
+                    		System.out.println(1);
+                    	else
+                    	System.out.println(0 );
+                    }
+    	            else
+    	            	System.out.println(0);
                 }
             }
-            for(; j < x+1; j++) {
-                dp[j] = dp[j-1];
-            }
-        }
-    }
-    
-}
-            int N = 3;
-            int coins[] = {3, 2, 1};
-            for (int i = 0; i < N; i++) coins[i] = sc.nextInt();
-            Solution ob = new Solution();
-            System.out.println(ob.count(coins, N, sum));
         }
     }
 }
-
-
 // } Driver Code Ends
 
 
-// User function Template for Java
-
-class Solution {
-    public long count(int coins[], int N, int sum) {
-        long dp[] = new long[sum+1];
-        dp[0] = 1;
-        
-        for(int i = 0; i < N; i++) {
-            for(int j = coins[i]; j <= sum; j++) {
-                dp[j] += dp[j - coins[i]];
-            }
-        }
-        
-        return dp[sum];
-    }
+/* The below function should return 
+the transformed string */
+class Solution
+{
+    
+   
+   public static String rearrangeString(String str)
+   {
+       char arr[] = str.toCharArray();
+       int len = arr.length;
+       
+       for(int i = 1; i < len; i++) {
+           if(arr[i-1] == arr[i]) {
+               for(int j = i+1; j < len; j++) {
+                   if(arr[i] != arr[j]) {
+                       char temp = arr[j];
+                       arr[j] = arr[i];
+                       arr[i] = temp;
+                       break;
+                   }
+               }
+           }
+       }
+	   String ans = "";
+       for(int i = 0; i < len; i++) ans += arr[i];
+       return ans;
+   }
+   
 }

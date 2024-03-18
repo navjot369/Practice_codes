@@ -1,3 +1,4 @@
-let x =  [11, 24, 32, 47];
-x.length = 8;
-console.log(x);
+let x = 10;
+if(x = 5) {
+    console.log(x);
+}
