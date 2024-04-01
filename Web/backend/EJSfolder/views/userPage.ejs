@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.name %></title>
+    <style>
+        body {
+            width: 70%;
+            margin: auto;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin: 0;
+        }
+        h1 ~ p {
+            font-size: 1.3rem;
+        }
+        .outer {
+            display: flex;
+            margin-bottom: 100px;
+        }
+        .inner {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .hover-div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+        .hover-div p{
+            margin: 0;
+        }
+        .inner:hover .hover-div {
+            display: flex;
+
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome @<%= data.name %></h1>
+    <p>Followers: <%= data.followers %> &nbsp;&nbsp; Following: <%= data.following %></p>
+    <div class="outer">
+        <% for(let post of data.posts) { %>
+            <div class="inner">
+            <img src="<%= post.image %>" alt="image" >
+            <div class="hover-div">
+                <p>Likes: <%= post.likes %></p>
+                <p>Comments: <%= post.comments %></p>
+            </div>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

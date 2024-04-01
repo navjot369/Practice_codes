@@ -1,100 +1,50 @@
-//{ Driver Code Starts
 import java.util.*;
-import java.lang.*;
 
-class Rearrange
-{
-    public static void main (String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t  = 1;
-        
-        while(t-- > 0)
-        {
-            String str = "";
-            str = sc.next();
-            
-            int old = str.length();
-            int chs[] = new int[26];
-            Arrays.fill(chs, 0);
-            
-            for(int i=0;i<str.length();i++){
-                int idx = str.charAt(i)-'a';
-                if(idx>=0&&idx<26)
-                chs[idx]++;
+public class Solution {
+    public static void main(String args[]) {
+        String str = "a+b+c+d-e";
+        String ans = infixToPostfix(str);
+
+        System.out.println(ans);
+    }
+    public static String infixToPostfix(String exp) {
+        String ans = "";
+        int len = exp.length();
+        Stack<Character> s = new Stack<>();
+        HashMap<Character, Integer> map = new HashMap<>();
+        map.put('^', 1);
+        map.put('*', 2);
+        map.put('/', 2);
+        map.put('+', 3);
+        map.put('-', 3);
+        map.put('(', 4);
+
+        for(int i = 0; i < len; i++) {
+            char ch = exp.charAt(i);
+            System.out.println(ch + " " + ans);
+            if(ch == '(') {
+                s.push(ch);
             }
-            Solution gfg = new Solution();     
-            str = gfg.rearrangeString(str);
-			System.out.println(str);
-            int flag=1,ff=0;
-            int chs2[] = new int[26];
-            Arrays.fill(chs2, 0);
-	        
-	        for(int i=0;i<str.length();i++){
-	            int idx = str.charAt(i)-'a';
-                if(idx>=0&&idx<26)
-	            chs2[idx]++;
-	        }
-	             
-	        if(str.length() != old)
-	         System.out.println(0);
-	        else
-	        {
-	            
-    	        for(int i=0;i<26;i++)
-                    if(chs[i] != chs2[i])
-                        ff=1;
-                
-                if(ff==1){
-                        System.out.println(0);
+            else if(ch == ')') {
+                while(s.peek() != '(')
+                ans += s.pop();
+                s.pop();
+            }
+            else if((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z')) {
+                System.out.println("here1"); 
+                ans += ch;
+            }
+            else {
+                System.out.println("here2");
+                while(!s.isEmpty() && map.get(s.peek()) <= map.get(ch)) {
+                    ans += s.pop();
                 }
-                else{
-        	        if(str != "-1"){
-                    	for(int i=1;i<str.length();i++)
-                    	{
-                    		if(str.charAt(i-1) == str.charAt(i))
-                    			flag=0;
-                    	}
-                    	if(flag == 1)
-                    		System.out.println(1);
-                    	else
-                    	System.out.println(0 );
-                    }
-    	            else
-    	            	System.out.println(0);
-                }
+                s.push(ch);
             }
         }
+        while(!s.isEmpty()) {
+            ans += s.pop();
+        }
+        return ans;
     }
-}
-// } Driver Code Ends
-
-
-/* The below function should return 
-the transformed string */
-class Solution
-{
-    
-   
-   public static String rearrangeString(String str)
-   {
-       char arr[] = str.toCharArray();
-       int len = arr.length;
-       
-       for(int i = 1; i < len; i++) {
-           if(arr[i-1] == arr[i]) {
-               for(int j = i+1; j < len; j++) {
-                   if(arr[i] != arr[j]) {
-                       char temp = arr[j];
-                       arr[j] = arr[i];
-                       arr[i] = temp;
-                       break;
-                   }
-               }
-           }
-       }
-	   String ans = "";
-       for(int i = 0; i < len; i++) ans += arr[i];
-       return ans;
-   }
-   
 }
