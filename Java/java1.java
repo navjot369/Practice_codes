@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class java1 {
     public static void main(String args[]) {
         String str = "a+b+c+d-e";
         String ans = infixToPostfix(str);

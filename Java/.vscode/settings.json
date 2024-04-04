@@ -1,5 +1,4 @@
 {
     "java.debug.settings.onBuildFailureProceed": true,
     "java.dependency.packagePresentation": "hierarchical",
-    "cmake.configureOnOpen": true
 }
