@@ -2,49 +2,39 @@ import java.util.*;
 
 public class java1 {
     public static void main(String args[]) {
-        String str = "a+b+c+d-e";
-        String ans = infixToPostfix(str);
-
-        System.out.println(ans);
-    }
-    public static String infixToPostfix(String exp) {
-        String ans = "";
-        int len = exp.length();
-        Stack<Character> s = new Stack<>();
-        HashMap<Character, Integer> map = new HashMap<>();
-        map.put('^', 1);
-        map.put('*', 2);
-        map.put('/', 2);
-        map.put('+', 3);
-        map.put('-', 3);
-        map.put('(', 4);
+        String s = "lee(t(c)o)de)";
+        Stack<String> st = new Stack<>();
+        int len = s.length();
+        String temp = "";
 
         for(int i = 0; i < len; i++) {
-            char ch = exp.charAt(i);
-            System.out.println(ch + " " + ans);
-            if(ch == '(') {
-                s.push(ch);
-            }
-            else if(ch == ')') {
-                while(s.peek() != '(')
-                ans += s.pop();
-                s.pop();
-            }
-            else if((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z')) {
-                System.out.println("here1"); 
-                ans += ch;
-            }
-            else {
-                System.out.println("here2");
-                while(!s.isEmpty() && map.get(s.peek()) <= map.get(ch)) {
-                    ans += s.pop();
+            char ch = s.charAt(i);
+            temp = "";
+            if(ch == ')') {
+                while(!st.isEmpty() && st.peek().compareTo("(") != 0) {
+                    System.out.println(i + " -- " + temp + " p- " + st.peek() + " is " + (st.peek().compareTo("(")));
+                    temp = st.pop() + temp;
                 }
-                s.push(ch);
+                System.out.println(i + " -- " + temp);
+                if(st.isEmpty()) {
+                    st.add(temp);
+                }else{
+                    st.pop();
+                    st.add("("+temp+")");
+                }
+            }
+            else{
+                temp += ch;
+                st.add(temp);
             }
         }
-        while(!s.isEmpty()) {
-            ans += s.pop();
+        temp = "";
+        while(!st.isEmpty()) {
+            System.out.println(st.peek());
+            if(st.peek() != "(") {
+                temp = st.pop() + temp;
+            }
         }
-        return ans;
+        System.out.println(temp);
     }
 }
