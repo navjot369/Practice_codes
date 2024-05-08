@@ -1,5 +1,10 @@
+import { Opulento } from "uvcanvas"
+
 export default function About() {
     return(
-        <div>About us</div>
+        <div>
+            hello
+            <Opulento />
+        </div>
     );
 }

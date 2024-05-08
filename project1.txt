@@ -1,0 +1,109 @@
+In the article we will describe how to start Ethereum private blockchain with Geth, and also touch on the mechanics of Ethereum private networks.
+What is Ethereum Private Network
+
+Ethereum private network is a private blockchain completely isolated from the main Ethereum network. Typically, private networks are created by organizations to store personal data that should not be visible to people outside the organization. In addition, the private network Ethereum can be used for testing and experiments with the blockchain.
+Features of private Ethereum blockchain:
+The private network blockchain is not affiliated with the main Ethereum chain.
+Access to the network is limited to one or more nodes.
+Creating private Ethereum networks for free.
+The complexity of mining is set during the creation.
+Free transactions.
+What is Ethereum Virtual Machine
+Before proceeding with the practical part of our instructions, a few important points should be made regarding the Ethereum mechanism and what Geth is and how to use it.
+
+Ethereum is an EVM network
+
+If you do not go into the technical nuances, then we can say that Ethereum is a network of many nodes, or EVM (Ethereum Virtual Machine). EVM is software that can understand a set of instructions written according to certain rules (to start a transaction, smart contracts, applications) and execute them on the Ethereum network in a certain logical order, like a normal computer.
+To start a private blockchain, your computer must become a node in the Ethereum network, that is, you need to download the entire blockchain network and synchronize it with the main chain of Ethereum. We can use various tools (client) for this, but we need those that allow us to interact with the blockchain network:
+Geth (Go Ethereum). The implementation of the Go (Golang) programming language for Ethereum is called Geth. This is one of the three initial implementations of the Ethereum protocol (along with Python and C ++). Choose this tool if you have at least minimal web development experience and want to experiment or create professional interfaces for dapps.
+Pyethapp. A Python-based client that implements the “Ethereum cryptoeconomic finite state machine”. You need to choose if you are interested in developing dapps or academic studies of the Ethereum network.
+C++ (eth). Ethereum implementation in C ++. Choose if you are serious about mining on the GPU or need to increase security by running two program implementations.
+Using these tools, you can access the console (terminal) - a JavaScript environment containing all the basic functions that we will need later. Access to the console is the main thing you need to start the private Ethereum blockchain, so ultimately it’s not particularly important which tool you choose.
+
+Geth client interface
+We chose Geth to write this guide because it is the most popular and relatively easy to use. Therefore, when it will be written later in the text that you need to write something in the console (terminal), it means that you need to do this with the help of Geth.
+What is Geth (Go Ethereum)
+Geth is a command line interface tool (CLI) that connects your system and equipment to the Ethereum network. With geth you can:
+carry out financial transactions;
+mine ether (utilitarian currency of the Ethereum network);
+create smart contracts, decentralized applications;
+create private blockchains;
+explore the block history;
+much more.
+The client can be downloaded from geth.ethereum.org. There are builds for Ubuntu (Linux family), OS X (Apple devices), Windows and even Android. Instructions on what to do after downloading the distribution kit are located in the «Install» section (be sure to read and do everything written there).
+How to create private blockchain Ethereum
+After we have installed and synchronized Geth with Ethereum, we can start the launch of a “private” or “test” network. This is the best way to learn blockchain technologies, as you can create, deploy and test smart contracts and decentralized applications within the Ethereum private network without spending a single live ether. Moreover, you can create a “fake” ether and use it to carry out a transaction and initialize smart contracts.
+Step 1: Create the DATADIR folder
+When running your own blockchain, it is strongly recommended to use a separate folder for storing data (database and wallet) of a private network. This is necessary for Ethereum private network files. Do not replace files with a public one.
+To do this, do the following:
+1. Create an empty folder on your desktop. For example, with the name PrviaceChain3.
+
+2. Right-click on the created folder and select «Git Bash Here».
+
+3. If everything is ok, the system will show the following.
+
+Step 2: Create a genesis block
+
+Blockchain scheme: genesis-block, main and “side” chains
+
+As you probably know, the blockchain is a distributed digital register in which all transactions are recorded in chronological order in the form of blocks. Blocks are generated during the mining process and added to the blockchain chain. The number of blocks is unlimited, but there is always one separate block that gave rise to the whole chain - the genesis-block.
+To create a private blockchain, you first need to generate a genesis block. To do this, you need to create a Genesis file, write the necessary commands (attributes) into it and use it with Geth.
+Here are the commands you need to register in the Genesis file:
+
+And this is what the attributes specified in it mean:
+config. Defines the blockchain configuration. Does not set anything concrete for the genesis block itself, but determines how the network will work.
+chainId. The identifier used by the blockchain (something like an address). You can specify a random number, provided that it does not match the numbers of several important blockchains, for example, the Ethereum main chain number (1). The instruction contains a random three-digit identifier (777).
+homesteadBlock. Homestead is the first official stable version of the Ethereum protocol, which replaced the previous version called Frontier. If you plan to use this release, the attribute should be set to “0”.
+You can connect other protocols such as Byzantium, eip155B and eip158. To do this, under the homesteadBlock add the protocol name with the Block prefix (for example, eip158Block) and set the parameter “0” to them.
+difficulty. Determines the difficulty of generating blocks. The higher the complexity, the more resources will be required for mining. To avoid waiting during tests and writing this text, we set a relatively low complexity value.
+gasLimit. Indicates the current network-wide gas consumption limit per unit. Gas is the “fuel” that is used to pay transaction fees on the Ethereum network. The more gas a user is willing to spend, the higher the priority of his transaction in the queue. We set this value to a high enough level to avoid limitations during tests.
+alloc. It allows you to create a cryptocurrency wallet for our private blockchain and fill it with fake ether. In our text, we will not use this option to show how to initiate mining on a private blockchain. If you are running a private blockchain to test a smart contract or a decentralized application, set the value you need (for example, 9999999999999).
+You can create a Genesis file with the necessary attributes using any text editor, for example, Notepad (available in any version of Windows). The name of the genesis file can be any, the main thing is to specify the extension “json”. In our induction, the name CustomGenesis.json will be used.
+After creating the Genesis file, open Geth and enter the following command:
+
+This command instructs Geth to use the CustomGenesis.json file we previously created to generate the first block of the private blockchain Ethereum. The “path_to_folder” attribute is the folder where you saved the Genesis file. Whereas the attribute “path_to_your_data_directory” indicates the folder in which the data of our private chain will be stored (created in the first step).
+When you run the specified attribute, you will see how Geth connects to the Genesis file and provides confirmation of the successful completion of the action. It will look like this:
+
+Step 3: Start the private network
+So, we have created a genesis block. Now you can run our private network so that we or other nodes (if you created several) can add new blocks. To do this, in the Geth console, you need to initiate the command:
+
+This command instructs Geth to launch a private blockchain. And use the specified directory ("path_to_your_data_directory" replace the address of the desired folder) to access the running network.
+The command also has the identifier "7776". It should be replaced with an arbitrary number that is not equal to the identifier of the networks already created, for example, the identifier of the main network Ethereum ("networkid = 1"). The identifier "networkid = 7776" also should not be used, otherwise you will connect to the network we have created for this guide.
+Here is a list of identifiers of the existing Ethereum blockchain networks:
+
+When you initiate the specified command with YOUR identifier, you start your blockchain's private network. This is what the Geth terminal will show after successfully executing the command:
+
+Another important point. Geth does not remember the parameters of your private blockchain network, so every time you want to access your private chain, you will need to run commands in the console that initiate a connection to the Genesis file and your private network. Keep them handy so you don’t look for them every time.
+These two teams:
+
+If everything is done correctly, by this moment you will have a personal blockchain and a private Ethereum network. And now you can begin to interact with this chain.
+Step 4: Create an externally owned account (EOA)
+
+Types of accounts in the Ethereum network
+
+There are two types of accounts on the Ethereum network: Externally Owned Accounts (EOA) and Contracts Accounts. You can find out about their capabilities and differences in the “Types of accounts, gas and transactions” section on ethdocs.org. To manage our blockchain network, we need EOA. To create it, you need to run Geth in two windows. In the second window / console enter the following command:
+
+This will connect the second window to the terminal of the first window (make sure it really happened - it all worked). If everything is correct, the terminal will display the following:
+
+If the image on your terminal matches the screenshot in the instructions, you can create an account. To do this, in the second window enter the command:
+
+Next you will be asked to set a password, the introduction of which initiates the creation of an account. It looks like this.
+Save the created account (a long set of characters in the screenshot), as you will use it often. In addition, save the passphrase because it will be needed every time you connect to your account.
+Next, we need to check the balance status of the account (how much ether is there). To do this, use the following command:
+
+That's what you should do:
+
+Account balance must be zero. This is correct, because when starting a private network in the genesis file, we did not specify anything in the alloc attribute. You can replenish the balance now in two ways: either someone will send you a little ether, or you will receive a reward for creating a new unit. And since you are now the only member of your private network, you have in fact, no choice.
+Step 5: Get some ether for our account
+Mining on the main chain of Ethereum (real) is complex and requires expensive equipment with powerful graphics processors. Usually ASICs are used for this. However, for the mining of coins of our chain, any device will be suitable, since in the genesis file we set the mining difficulty low (difficulty attribute). In other words, we can start mining just by using the following command:
+
+The result should be:
+
+If you use the eth.getBalance command in the second Geth window, you will see how the balance of your account is replenished with a fake ether. The speed of mining will be very high, so you can become a multimillionaire in just a couple of seconds.
+
+When there is enough money, use the following command to stop mining:
+
+And remember that this is a fake ether. It can only be used within your private blockchain for testing transactions, smart contracts, decentralized applications and other functions.
+Congratulations!
+You created your first private Ethereum blockchain and got some ether! Yes, this is not real money and a test network, but the experience gained can be used to launch startups or integrate blockchain technologies into your own business.
+The Merehead company develops blockchain-based platforms. Our experts have extensive experience in building complex high-load projects. As a rule, we use Ethereum and Bitcoin nodes. But we use Hyperledger Fabric or Corda to develop more flexible solutions.

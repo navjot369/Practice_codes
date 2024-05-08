@@ -1,16 +1,22 @@
 import './App.css';
-import React from 'react';
-import About from './pages/about.js';
-import Contact from './pages/contact.js';
-import {Routes, Route} from 'react-router-dom';
+import React, {useState} from 'react';
+
 
 function App() {
   return (
-    <Routes>
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
+    <div >
+
+    </div>
   );
+}
+
+function Info(data) {
+  const[show, setShow] = useState(false);
+  return(
+    <div className="info-box">
+
+    </div>
+  )
 }
 
 export default App;

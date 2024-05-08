@@ -1,40 +1,30 @@
 import java.util.*;
 
 public class java1 {
-    public static void main(String args[]) {
-        String s = "lee(t(c)o)de)";
-        Stack<String> st = new Stack<>();
-        int len = s.length();
-        String temp = "";
+    public static class Node {
+        int val;
+        Node left;
+        Node right;
 
-        for(int i = 0; i < len; i++) {
-            char ch = s.charAt(i);
-            temp = "";
-            if(ch == ')') {
-                while(!st.isEmpty() && st.peek().compareTo("(") != 0) {
-                    System.out.println(i + " -- " + temp + " p- " + st.peek() + " is " + (st.peek().compareTo("(")));
-                    temp = st.pop() + temp;
-                }
-                System.out.println(i + " -- " + temp);
-                if(st.isEmpty()) {
-                    st.add(temp);
-                }else{
-                    st.pop();
-                    st.add("("+temp+")");
-                }
-            }
-            else{
-                temp += ch;
-                st.add(temp);
-            }
+        Node(int v) {
+            this.val = v;
+            this.left = null;
+            this.right = null;
         }
-        temp = "";
-        while(!st.isEmpty()) {
-            System.out.println(st.peek());
-            if(st.peek() != "(") {
-                temp = st.pop() + temp;
-            }
+    }
+
+    public static Node insert(Node root, int val) {
+        if(root == null) {
+            return new Node(val);
         }
-        System.out.println(temp);
+
+        if(root.val >= val) {
+            root.left = insert(root.left, val);
+        }
+        if(root.val < val) {
+            root.right = insert(root.right, val);
+        }
+
+        return root;
     }
 }

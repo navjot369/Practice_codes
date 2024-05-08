@@ -15,10 +15,11 @@ public class BTS1 {
 
     public static Node insert(Node root, int val) {
         if(root == null) {
+            
             return new Node(val);
         }
 
-        if(val < root.data) {
+        if(val <= root.data) {
             root.left = insert(root.left, val);
         }
         else if(val > root.data) {
@@ -152,21 +153,21 @@ public class BTS1 {
     }
 
     public static void main(String args[]) {
-        Node root = new Node(8); 
-        root.left = new Node(5);
-        root.right = new Node(10);
-        root.left.left = new Node(3);
-        root.left.right = new Node(6);
-        root.right.right = new Node(11);
-        root.left.left.left = new Node(1);
-        root.left.left.right = new Node(4);
+        // Node root = new Node(8); 
+        // root.left = new Node(5);
+        // root.right = new Node(10);
+        // root.left.left = new Node(3);
+        // root.left.right = new Node(6);
+        // root.right.right = new Node(11);
+        // root.left.left.left = new Node(1);
+        // root.left.left.right = new Node(4);
 
-        // Node root = null;
+        Node root = null;
 
-        // int arr[] = {5 ,1, 2, 3, 7, 10, 11, 12, 8};
-        // for(int i = 0; i < arr.length; i++) {
-        //     root = insert(root, arr[i]);
-        // }
+        int arr[] = {5 ,1, 2, 3, 7, 10, 11, 12, 8};
+        for(int i = 0; i < arr.length; i++) {
+            root = insert(root, arr[i]);
+        }
 
         inOrder(root);
         System.out.println("\n-----");
